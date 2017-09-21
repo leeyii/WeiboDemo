@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  WBTabBarController.h
 //  Weibo-OC
 //
 //  Created by leeyii on 2017/9/21.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface WBTabBarController : UITabBarController
 
 @end
-

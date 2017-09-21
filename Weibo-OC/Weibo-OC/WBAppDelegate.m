@@ -6,17 +6,26 @@
 //  Copyright © 2017年 leeyii. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "WBAppDelegate.h"
+#import "WBTabBarController.h"
 
-@interface AppDelegate ()
+@interface WBAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation WBAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    WBTabBarController *tabbarVC = [WBTabBarController new];
+    
+    UIWindow *window = [[UIWindow alloc] initWithFrame:WBScreenBounds];
+    window.rootViewController = tabbarVC;
+    [window makeKeyAndVisible];
+    self.window = window;
+    
     return YES;
 }
 
