@@ -10,6 +10,31 @@
 #import "WBTabBar.h"
 #import "WBNavigationController.h"
 
+@implementation UIViewController (WBTabBarBadge)
+
+- (NSInteger)tabbarBadgeNumber {
+    // is in tabbarController viewControllers ?
+    if (!self.tabBarController) {
+        NSLog(@"vc isn't in tabbarController viewControllers");
+        return 0;
+    }
+    NSInteger index = [self.tabBarController.viewControllers indexOfObject:self];
+    NSInteger numbre = [(WBTabBarController *)self.tabBarController badgeNumberAtIndex:index];
+    
+    return numbre;
+}
+
+- (void)setTabbarBadgeNumber:(NSInteger)tabbarBadgeNumber {
+    if (!self.tabBarController) {
+        NSLog(@"vc isn't in tabbarController viewControllers");
+        return;
+    }
+    NSInteger index = [self.tabBarController.viewControllers indexOfObject:self];
+    [(WBTabBarController *)self.tabBarController setBadgeNumber:tabbarBadgeNumber atIndex:index];
+}
+
+@end
+
 @interface WBTabBarController ()
 
 @end
@@ -25,7 +50,7 @@
     // custom tabbar
     WBTabBar *tabbar = [WBTabBar new];
     [self setValue:tabbar forKey:@"tabBar"];
-    
+
     // add child viewControllers
     UINavigationController *home = [self childControllerWithTitle:@"微博"
                                                   normalImageName:@"tabbar_home"
@@ -41,6 +66,10 @@
                                                         selImageName:@"tabbar_profile_selected"];
     
     self.viewControllers = @[home, message, discover, profile];
+    
+    [(WBTabBar *)self.tabBar setCenterItemWithImage:nil selectImage:nil clickCallback:^(WBTabBarCenterItemClickType type) {
+        
+    }];
      
 }
 
@@ -56,12 +85,20 @@
     return vc;
 }
 
+#pragma mark - Badge number
 
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index {
+    [(WBTabBar *)self.tabBar setBadgeNumber:number atIndex:index];
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)badgeNumberAtIndex:(NSInteger)index {
+    return [(WBTabBar *)self.tabBar badgeNumberAtIndex:index];
 }
 
 
 @end
+
+
+
+
+

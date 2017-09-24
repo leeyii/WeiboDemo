@@ -10,8 +10,24 @@
 
 @class WBTabBarController;
 
+typedef NS_ENUM(NSUInteger, WBTabBarCenterItemClickType) {
+    WBTabBarCenterItemClickTypeTap,
+    WBTabBarCenterItemClickTypePress
+};
+
+typedef void(^WBTabBarClickBlock)(WBTabBarCenterItemClickType type);
+
 @interface WBTabBar : UITabBar
 
-@property (nonatomic, weak) WBTabBarController *tabar;
+- (void)setCenterItemWithImage:(UIImage *)image
+                   selectImage:(UIImage *)selImage
+                 clickCallback:(WBTabBarClickBlock)block;
+
+
+/************************Badge number******************************/
+
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index;
+
+- (NSInteger)badgeNumberAtIndex:(NSInteger)index;
 
 @end
