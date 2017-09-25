@@ -31,6 +31,7 @@
 		073850321F73AE6A00DBE535 /* WBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 073850311F73AE6A00DBE535 /* WBNavigationController.m */; };
 		073850351F73AF4400DBE535 /* WBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 073850341F73AF4400DBE535 /* WBTabBar.m */; };
 		0738505B1F73C57100DBE535 /* UIView+WBAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738505A1F73C57100DBE535 /* UIView+WBAddtion.m */; };
+		0792DCFF1F789A63005FAC90 /* UIViewController+WBAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0792DCFE1F789A63005FAC90 /* UIViewController+WBAddtion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,9 @@
 		0738503A1F73B29F00DBE535 /* WBPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBPrefixHeader.pch; sourceTree = "<group>"; };
 		073850591F73C57100DBE535 /* UIView+WBAddtion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+WBAddtion.h"; sourceTree = "<group>"; };
 		0738505A1F73C57100DBE535 /* UIView+WBAddtion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+WBAddtion.m"; sourceTree = "<group>"; };
+		0792DCFC1F77AF79005FAC90 /* WBTabBarControllerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBTabBarControllerHeader.h; sourceTree = "<group>"; };
+		0792DCFD1F789A63005FAC90 /* UIViewController+WBAddtion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WBAddtion.h"; sourceTree = "<group>"; };
+		0792DCFE1F789A63005FAC90 /* UIViewController+WBAddtion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WBAddtion.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,7 @@
 				073850311F73AE6A00DBE535 /* WBNavigationController.m */,
 				073850331F73AF4400DBE535 /* WBTabBar.h */,
 				073850341F73AF4400DBE535 /* WBTabBar.m */,
+				0792DCFC1F77AF79005FAC90 /* WBTabBarControllerHeader.h */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -208,6 +213,8 @@
 			children = (
 				073850591F73C57100DBE535 /* UIView+WBAddtion.h */,
 				0738505A1F73C57100DBE535 /* UIView+WBAddtion.m */,
+				0792DCFD1F789A63005FAC90 /* UIViewController+WBAddtion.h */,
+				0792DCFE1F789A63005FAC90 /* UIViewController+WBAddtion.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -314,6 +321,7 @@
 				073850211F73A63000DBE535 /* main.m in Sources */,
 				073850131F73A63000DBE535 /* WBAppDelegate.m in Sources */,
 				0738502F1F73AE4200DBE535 /* WBTabBarController.m in Sources */,
+				0792DCFF1F789A63005FAC90 /* UIViewController+WBAddtion.m in Sources */,
 				0738505B1F73C57100DBE535 /* UIView+WBAddtion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

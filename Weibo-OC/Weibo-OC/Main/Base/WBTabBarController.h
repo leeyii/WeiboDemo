@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBTabBarControllerHeader.h"
 
 @interface WBTabBarController : UITabBarController
 
@@ -17,7 +18,7 @@
  @param number badge number
  @param index viewController index 从 0 开始
  */
-- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index;
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index type:(WBTabBarBadgeType)type;
 
 /**
  获取 指定index viewController BadgeNumber
@@ -30,6 +31,8 @@
 @end
 
 @interface UIViewController (WBTabBarBadge)
+
+@property (nonatomic, assign) BOOL showBadgeValue; //  default is NO
 
 @property (nonatomic, assign) NSInteger tabbarBadgeNumber;
 

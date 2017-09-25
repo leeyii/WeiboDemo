@@ -9,8 +9,17 @@
 #import "WBTabBarController.h"
 #import "WBTabBar.h"
 #import "WBNavigationController.h"
+#import <objc/runtime.h>
 
 @implementation UIViewController (WBTabBarBadge)
+
+- (BOOL)showBadgeValue {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setShowBadgeValue:(BOOL)showBadgeValue {
+    objc_setAssociatedObject(self, @selector(showBadgeValue), @(showBadgeValue), OBJC_ASSOCIATION_ASSIGN);
+}
 
 - (NSInteger)tabbarBadgeNumber {
     // is in tabbarController viewControllers ?
@@ -29,8 +38,9 @@
         NSLog(@"vc isn't in tabbarController viewControllers");
         return;
     }
+    
     NSInteger index = [self.tabBarController.viewControllers indexOfObject:self];
-    [(WBTabBarController *)self.tabBarController setBadgeNumber:tabbarBadgeNumber atIndex:index];
+    [(WBTabBarController *)self.tabBarController setBadgeNumber:tabbarBadgeNumber atIndex:index type:!self.showBadgeValue];
 }
 
 @end
@@ -70,6 +80,10 @@
     [(WBTabBar *)self.tabBar setCenterItemWithImage:nil selectImage:nil clickCallback:^(WBTabBarCenterItemClickType type) {
         
     }];
+    
+    home.showBadgeValue = NO;
+    
+    home.tabbarBadgeNumber = 99;
      
 }
 
@@ -87,8 +101,8 @@
 
 #pragma mark - Badge number
 
-- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index {
-    [(WBTabBar *)self.tabBar setBadgeNumber:number atIndex:index];
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index type:(WBTabBarBadgeType)type{
+    [(WBTabBar *)self.tabBar setBadgeNumber:number atIndex:index badgeTyep:type];
 }
 
 - (NSInteger)badgeNumberAtIndex:(NSInteger)index {

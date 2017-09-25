@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBTabBarControllerHeader.h"
 
 @class WBTabBarController;
+
 
 typedef NS_ENUM(NSUInteger, WBTabBarCenterItemClickType) {
     WBTabBarCenterItemClickTypeTap,
@@ -26,7 +28,7 @@ typedef void(^WBTabBarClickBlock)(WBTabBarCenterItemClickType type);
 
 /************************Badge number******************************/
 
-- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index;
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index badgeTyep:(WBTabBarBadgeType)type;
 
 - (NSInteger)badgeNumberAtIndex:(NSInteger)index;
 

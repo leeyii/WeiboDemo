@@ -20,6 +20,8 @@ static const NSInteger kBadgeViewTag = 999;
 
 @property (nonatomic, assign) BOOL needRefresh;
 
+@property (nonatomic, assign) WBTabBarBadgeType type;
+
 @property (nonatomic, assign) NSInteger badgeNumber;
 
 @property (nonatomic, weak) UILabel *badgeView;
@@ -91,19 +93,30 @@ static const NSInteger kBadgeViewTag = 999;
     [_badgeInfos enumerateKeysAndObjectsUsingBlock:^(NSString *key, _WBTabBarItemBadgeInfo *info, BOOL * _Nonnull stop) {
         if (info.needRefresh) {
             
-            NSString *numberStr = info.badgeNumber > 99 ? @"..." : @(info.badgeNumber).stringValue;
-            
             if (info.badgeNumber > 0) {
                 info.badgeView.hidden = NO;
+                CGFloat width = 0.0;
+                CGFloat heigth = 0.0;
+                NSString *numberStr;
+                if (WBTabBarBadgeTypeDot == info.type) {
+                    numberStr = @"";
+                    width = 6;
+                    heigth = 6;
+                    info.badgeView.layer.cornerRadius = 3;
+                } else {
+                    numberStr = info.badgeNumber > 99 ? @"..." : @(info.badgeNumber).stringValue;
+                    if (numberStr.length == 1) {
+                        width = 12;
+                    } else {
+                        width = 15;
+                    }
+                    info.badgeView.layer.cornerRadius = 6;
+                    heigth = kBadgeViewH;
+                }
+                
                 info.badgeView.text = numberStr;
                 UIView *tabbarButton = info.tabbarButton;
-                CGFloat width = 0.0;
-                if (numberStr.length == 1) {
-                    width = 12;
-                } else {
-                    width = 15;
-                }
-                info.badgeView.frame = CGRectMake(tabbarButton.wb_w / 2 + kBadgeViewCenterOffset, kBadgeViewTop, width, kBadgeViewH);
+                info.badgeView.frame = CGRectMake(tabbarButton.wb_w / 2 + kBadgeViewCenterOffset, kBadgeViewTop, width, heigth);
             } else {
                 info.badgeView.hidden = YES;
             }
@@ -117,7 +130,7 @@ static const NSInteger kBadgeViewTag = 999;
 
 #pragma mark - Public API
 
-- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index {
+- (void)setBadgeNumber:(NSInteger)number atIndex:(NSInteger)index badgeTyep:(WBTabBarBadgeType)type{
     _WBTabBarItemBadgeInfo *info = _badgeInfos[@(index).stringValue];
     if (!info) {
         info = [_WBTabBarItemBadgeInfo new];
@@ -140,6 +153,7 @@ static const NSInteger kBadgeViewTag = 999;
         
         _badgeInfos[@(index).stringValue] = info;
     }
+    info.type = type;
     if (info.badgeNumber != number) {
         info.badgeNumber = number;
         info.needRefresh = YES;
