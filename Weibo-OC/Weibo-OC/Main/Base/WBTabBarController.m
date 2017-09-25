@@ -81,9 +81,12 @@
         
     }];
     
-    home.showBadgeValue = NO;
+    home.showBadgeValue = YES;
     
     home.tabbarBadgeNumber = 99;
+    
+    profile.showBadgeValue = NO;
+    profile.tabbarBadgeNumber = 1;
      
 }
 

@@ -12,7 +12,9 @@
 
 #import "WBMacros.h"
 
-#import "UIView+WBAddtion.h" 
+#import "UIView+WBAddtion.h"
+
+#import "WBNetworkManager.h"
 
 
 #endif /* WBPrefixHeader_pch */
